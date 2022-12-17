@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <h3>Recuperação de Senha</h3>
+                    <p>Entre com seus dados de usuário:</p>
+                </div>
+                <hr/>
+ 
+                <div class="mb-2 text-primary text-center">
+                    <strong>{{mensagem_sucesso}}</strong>
+                </div>
+ 
+                <div class="mb-2 text-danger text-center">
+                    <strong>{{mensagem_erro}}</strong>
+                </div>
+ 
+                <form [formGroup]="formRecuperarSenha" (ngSubmit)="onSubmit()">
+                    <div class="mb-2">
+                        <label>Endereço de email:</label>
+                        <input type="text" class="form-control" formControlName="email"/>
+                        <div class="text-danger" *ngIf="form.email.touched && form.email.invalid">
+                            <span *ngIf="form.email.errors.required">
+                                Por favor, informe o email do usuário.
+                            </span>
+                            <span *ngIf="form.email.errors.email">
+                                Por favor, informe um endereço de email válido.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-2 d-grid">
+                        <input type="submit" class="btn btn-primary" value="Recuperar Senha"
+                            [disabled]="!formRecuperarSenha.valid"/>
+                    </div>
+                    <div class="mb-2 d-grid">
+                        <a [routerLink]="['/acessar-conta']" class="btn btn-light">
+                            Já possui conta? <strong>Acesse aqui!</strong>
+                        </a>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

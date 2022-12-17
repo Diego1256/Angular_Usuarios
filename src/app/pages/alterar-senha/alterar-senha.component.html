@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <h3>Alteração de senha do usuário</h3>
+                    <p>Preencha os campos para atualizar sua senha de acesso:</p>
+                </div>
+                <br/>
+ 
+                <div class="mb-2 text-primary text-center">
+                    <strong>{{mensagem_sucesso}}</strong>
+                </div>
+ 
+                <div class="mb-2 text-danger text-center">
+                    <strong>{{mensagem_erro}}</strong>
+                </div>
+ 
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+ 
+                        <form [formGroup]="formAlterarSenha" (ngSubmit)="onSubmit()">
+ 
+                            <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <label>Informe sua senha atual:</label>
+                                    <input type="password" class="form-control" formControlName="senhaAtual"/>
+                                    <div class="text-danger" *ngIf="form.senhaAtual.touched && form.senhaAtual.invalid">
+                                        <span *ngIf="form.senhaAtual.errors.required">
+                                            Por favor, informe a senha atual.
+                                        </span>
+                                        <span *ngIf="form.senhaAtual.errors.minlength">
+                                            Por favor, informe no mínimo 8 caracteres.
+                                        </span>
+                                        <span *ngIf="form.senhaAtual.errors.maxlength">
+                                            Por favor, informe no máximo 20 caracteres.
+                                        </span>
+                                    </div>        
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Informe a nova senha:</label>
+                                    <input type="password" class="form-control" formControlName="novaSenha"/>
+                                    <div class="text-danger" *ngIf="form.novaSenha.touched && form.novaSenha.invalid">
+                                        <span *ngIf="form.novaSenha.errors.required">
+                                            Por favor, informe a nova senha.
+                                        </span>
+                                        <span *ngIf="form.novaSenha.errors.minlength">
+                                            Por favor, informe no mínimo 8 caracteres.
+                                        </span>
+                                        <span *ngIf="form.novaSenha.errors.maxlength">
+                                            Por favor, informe no máximo 20 caracteres.
+                                        </span>
+                                    </div>        
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <input type="submit" class="btn btn-primary" value="Salvar alterações"
+                                    [disabled]="!formAlterarSenha.valid"/>
+                            </div>
+                        </form>        
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>

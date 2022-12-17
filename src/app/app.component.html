@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Controle de usuários</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+ 
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a class="nav-link active" aria-current="page" routerLink="acessar-conta">
+            Acessar Conta
+          </a>
+        </li>
+ 
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a class="nav-link active" aria-current="page" routerLink="criar-conta">
+            Criar Conta
+          </a>
+        </li>
+ 
+        <li class="nav-item" *ngIf="!isAuthenticated">
+          <a class="nav-link active" aria-current="page" routerLink="recuperar-senha">
+            Esqueci minha senha
+          </a>
+        </li>
+ 
+        <li class="nav-item dropdown" *ngIf="isAuthenticated">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Operações do usuário
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="consultar-historico">
+                Consultar histórico
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="alterar-senha">
+                Atualizar senha de acesso
+              </a>
+            </li>
+          </ul>
+        </li>        
+      </ul>
+    </div>
+ 
+    <div *ngIf="isAuthenticated" class="collapse navbar-collapse">
+      <p class="navbar-text">
+        <span>Usuário autenticado: <strong>{{emailUsuario}}</strong></span>
+        <br/>
+        <button (click)="logout()" class="btn btn-sm btn-outline-secondary mt-1">Sair do Sistema</button>
+      </p>
+    </div>
+ 
+  </div>
+</nav>
+ 
+<div class="container mt-4">
+  <!-- local para renderização dos componentes -->
+  <router-outlet></router-outlet>
+</div>
